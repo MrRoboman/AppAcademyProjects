@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
   include ArticlesHelper
   
+  before_filter :require_login, only: [:new, :create, :edit, :destroy, :update]
+  
   def index
     @articles = Article.all
   end
