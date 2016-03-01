@@ -6,6 +6,17 @@
 	<%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Delete '#{@article.title}'?"} %>
 </p>
 <br/>
+
+<% unless @article.tags.empty? %>
+	<p>
+		Tags: 
+		<% @article.tags.each do |tag| %>
+			<%= link_to tag.name, tag_path(tag) %>
+		<% end %>
+	</p>
+	<br/>
+<% end %>
+
 <p><%= link_to "<< Back to Articles", articles_path %></p>
 
 <h3><%= @article.comments.empty? ? "No Comments" : "Comments (#{@article.comments.size})" %></h3>
