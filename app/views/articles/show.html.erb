@@ -1,4 +1,5 @@
 <h1><%= @article.title %></h1>
+<p><%= image_tag @article.image.url if @article.image.exists? %></p><br/>
 <p><%= @article.body %></p>
 <br/>
 <p>
@@ -9,7 +10,7 @@
 
 <% unless @article.tags.empty? %>
 	<p>
-		Tags: 
+		Tags:
 		<% @article.tags.each do |tag| %>
 			<%= link_to tag.name, tag_path(tag) %>
 		<% end %>
