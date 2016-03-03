@@ -32,9 +32,20 @@
 
   <br/>
   <div class="date-navigation">
+    <h6>by Month</h6>
     <ul>
-      <% Article.months.each do |month| %>
+      <% ArticlesHelper.months.each do |month| %>
         <li><%= link_to month, articles_path(:month => month) %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <br/>
+  <div class="most-popular">
+    <h6>by Popularity</h6>
+    <ul>
+      <% ArticlesHelper.most_popular(3).each do |article| %>
+        <li><%= link_to "#{article.title} (#{article.view_count} views)", article_path(article) %></li>
       <% end %>
     </ul>
   </div>

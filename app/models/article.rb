@@ -19,8 +19,4 @@ class Article < ActiveRecord::Base
     self.view_count += 1
     save
   end
-
-  def self.months
-    Article.all.sort_by { |article| article.updated_at.month }.map { |article| article.updated_at.strftime("%B") }.uniq
-  end
 end
