@@ -18,6 +18,7 @@ class ArticlesController < ApplicationController
     #Why do we use Comment.new instead of @article.comments.new??
     @comment = Comment.new
     @comment.article_id = @article.id
+    @article.increment_views
   end
 
   def new

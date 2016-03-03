@@ -14,7 +14,13 @@ class Article < ActiveRecord::Base
     self.tags = tag_names.collect{ |name| Tag.find_or_create_by(name: name) }
   end
 
+  def increment_views
+    self.view_count ||= 0
+    self.view_count += 1
+    save
+  end
+
   def self.months
-    Article.all.sort_by { |article| article.updated_at.month }.map { |article| article.updated_at.strftime("%B") }.uniq 
+    Article.all.sort_by { |article| article.updated_at.month }.map { |article| article.updated_at.strftime("%B") }.uniq
   end
 end
