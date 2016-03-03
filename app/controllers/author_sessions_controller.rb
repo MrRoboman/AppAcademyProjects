@@ -1,4 +1,5 @@
 class AuthorSessionsController < ApplicationController
+  
   def new
   end
 
@@ -13,6 +14,6 @@ class AuthorSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to(:authors, notice: 'Logged out!')
+    redirect_to(:articles, notice: 'Logged out!')
   end
 end
