@@ -4,7 +4,13 @@ class ArticlesController < ApplicationController
   before_filter :require_login, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @articles = Article.all
+    if params[:month]
+      @articles = Article.all.select {|article| article.updated_at.strftime("%B") == params[:month]}
+      @filter = ": #{params[:month]}"
+    else
+      @articles = Article.all
+      @filter = ""
+    end
   end
 
   def show

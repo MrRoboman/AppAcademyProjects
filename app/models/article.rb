@@ -13,4 +13,8 @@ class Article < ActiveRecord::Base
     tag_names = tags_string.split(',').collect{|tag| tag.strip.gsub(/ +/, "_").downcase}.uniq
     self.tags = tag_names.collect{ |name| Tag.find_or_create_by(name: name) }
   end
+
+  def self.months
+    Article.all.sort_by { |article| article.updated_at.month }.map { |article| article.updated_at.strftime("%B") }.uniq 
+  end
 end
