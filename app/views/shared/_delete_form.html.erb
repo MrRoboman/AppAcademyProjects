@@ -1,0 +1,12 @@
+
+
+<form action="" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <select>
+    <% cats.each do |cat| %>
+      <option value="<%= cat.name %>"><%= cat.name %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Euthanize">
+</form>
