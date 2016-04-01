@@ -7,5 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 3.times do |i|
-  User.create!(email: (i+1), password: ((i+1).to_s*6))
+  user = User.create!(email: (i+1), password: ((i+1).to_s*6))
+  band = Band.create!(name: Faker::Superhero.name)
+  album= Album.create!(name: Faker::StarWars.droid, band: band)
+  track= Track.create!(name: Faker::StarWars.character, ord: (1), album: album)
 end

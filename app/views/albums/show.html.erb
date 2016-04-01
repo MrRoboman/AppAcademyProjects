@@ -1,0 +1,15 @@
+<!-- Album show -->
+
+<% recorded = @album.recording_venue == "Live" ? "recorded Live" : "recorded in Studio" %>
+<% recorded = "" if @album.recording_venue.nil? %>
+
+<h1><%= @album.name %> by <%= @album.band.name %> <%= recorded %></h1>
+<%= link_to "edit", edit_album_url %>
+
+<h2>Tracks</h2>
+
+<% @album.tracks.each do |track| %>
+  <ul>
+    <li><%= "#{track.ord} #{track.name}" %></li>
+  </ul>
+<% end %>

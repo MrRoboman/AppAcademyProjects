@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!(@user)
-      render text: "User with email: '#{current_user.email}' created! Come back to UsersController to fix this redirect"
+      redirect_to bands_url
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new

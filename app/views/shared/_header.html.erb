@@ -1,7 +1,12 @@
 <% user = logged_in? ? "Logged in as #{current_user.email}" : '' %>
-<% button = "" %>
+<% current_uri = request.env['PATH_INFO'] %>
 
 <p>
   <%= user %>
-  <%= logged_in? ? button_to("log out", session_url, method: 'delete') : button_to("log in", new_session_url, method: 'get') %>
+  <% if logged_in? %>
+    <%= button_to("log out", session_url, method: 'delete') %>
+  <% else %>
+    <%= button_to("log in", new_session_url, method: 'get') unless current_uri == '/session/new' %>
+    <%= button_to("create acct", new_user_url, method: 'get') unless current_uri == '/users/new' %>
+  <% end %>
 </p>
