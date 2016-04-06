@@ -7,15 +7,15 @@ class ControllerBase
   attr_reader :req, :res, :params
 
   # Setup the controller
-  def initialize(req, res)
+  def initialize(req, res, route_params = {})
     @req = req
     @res = res
-    @already_built_response = false
+    @params = route_params.merge(req.params)
   end
 
   # Helper method to alias @already_built_response
   def already_built_response?
-    @already_built_response
+    @already_built_response ||= false
   end
 
   # Set the response status code and header
@@ -45,9 +45,9 @@ class ControllerBase
     filepath = "views/#{controller}/#{template}"
 
     template = ERB.new(File.read(filepath))
-    body = template.result(binding)
+    content = template.result(binding)
 
-    render_content(body, 'text/html')
+    render_content(content, 'text/html')
   end
 
   # method exposing a `Session` object
@@ -59,6 +59,5 @@ class ControllerBase
   def invoke_action(name)
     self.send(name)
     self.render(name) unless already_built_response?
-
   end
 end
