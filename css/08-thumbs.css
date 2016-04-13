@@ -1,0 +1,27 @@
+/* PHASE 8: Thumbs */
+.thumb {
+  /*display: flex;*/
+  height: 100%;
+}
+
+.thumb ul {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumb li {
+  border: 1px solid black;
+  overflow: hidden;
+  border-radius: 4px;
+  margin: 4px;
+  width: 58px;
+  height: 58px;
+}
+
+.thumb img {
+  max-width: 100%;
+  max-height: 100%;
+}
