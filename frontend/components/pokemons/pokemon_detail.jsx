@@ -1,6 +1,7 @@
 var React = require('react'),
     pokemonStore = require('../../stores/pokemon'),
-    ClientActions = require('../../actions/client_actions');
+    ClientActions = require('../../actions/client_actions'),
+    ToysIndex = require('../toys/toys_index');
 
 var PokemonDetail = React.createClass({
   componentWillReceiveProps: function(props) {
@@ -14,6 +15,7 @@ var PokemonDetail = React.createClass({
 
   componentDidMount: function() {
     this.listener = pokemonStore.addListener(this._onChange);
+    ClientActions.fetchSinglePokemon(this.props.params.pokemonId);
   },
 
   componentWillUnmount: function() {
@@ -31,9 +33,11 @@ var PokemonDetail = React.createClass({
 
   render: function() {
     var content = <div className="detail">Loading...</div>;
+    var toysIndex = <div>Loading...</div>;
+    var pokemon = this.state.pokemon;
 
-    if(this.state.pokemon){
-      var movesString = this.state.pokemon.moves.map(function(move){
+    if (pokemon) {
+      var movesString = pokemon.moves.map(function(move){
         return '"' + move + '"';
       }).join(", ");
 
@@ -41,20 +45,26 @@ var PokemonDetail = React.createClass({
 
       content = (
         <div className="detail">
-          <img src={this.state.pokemon.image_url} />
-          <p>name: {this.state.pokemon.name}</p>
-          <p>attack: {this.state.pokemon.attack}</p>
-          <p>defense: {this.state.pokemon.defense}</p>
-          <p>poke_type: {this.state.pokemon.poke_type}</p>
+          <img src={pokemon.image_url} />
+          <p>name: {pokemon.name}</p>
+          <p>attack: {pokemon.attack}</p>
+          <p>defense: {pokemon.defense}</p>
+          <p>poke_type: {pokemon.poke_type}</p>
           <p>moves: {movesString}</p>
         </div>
       );
+
+      if (pokemon.toys) {
+        toysIndex = <ToysIndex toys={pokemon.toys} />;
+      }
     }
 
     return (
       <div>
         <div className="pokemon-detail-pane">
           {content}
+          <h2 className="detail-header">Toys:</h2>
+          {toysIndex}
         </div>
       </div>
     );
