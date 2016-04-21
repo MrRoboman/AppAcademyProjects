@@ -66,6 +66,8 @@ var PokemonDetail = React.createClass({
           <h2 className="detail-header">Toys:</h2>
           {toysIndex}
         </div>
+        
+        {this.props.children}
       </div>
     );
   }
