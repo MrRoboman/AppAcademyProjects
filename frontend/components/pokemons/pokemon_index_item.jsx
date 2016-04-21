@@ -4,7 +4,7 @@ var PokemonIndexItem = React.createClass({
 
   render: function() {
     return (
-      <li>{this.props.pokemon.name}</li>
+      <li className="poke-list-item">{this.props.pokemon.name}</li>
     );
   }
 
