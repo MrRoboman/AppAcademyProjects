@@ -1,9 +1,15 @@
 var React = require('react'),
     ReactDOM = require('react-dom'),
-    PokemonsIndex = require('./components/pokemons/pokemons_index');
-    // pokemonStore = require('./stores/pokemon');
-    // ClientActions = require('./actions/client_actions');
+    Router = require('react-router').Router,
+    Route = require('react-router').Route,
+    hashHistory = require('react-router').hashHistory,
+    App = require('./components/app');
 
 $(function() {
-  ReactDOM.render(<PokemonsIndex/>, document.getElementById('root'));
+  ReactDOM.render(
+    <Router history={hashHistory}>
+      <Route path="/" component={App}></Route>
+    </Router>,
+    document.getElementById('root')
+ );
 });
