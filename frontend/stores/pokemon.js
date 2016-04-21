@@ -27,6 +27,10 @@ pokemonStore.all = function() {
   return result;
 };
 
+pokemonStore.find = function(id) {
+  return _pokemons[id];
+};
+
 // private
 
 var resetPokemons = function(pokemons) {
