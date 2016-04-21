@@ -1,7 +1,13 @@
 var React = require('react'),
-    pokemonStore = require('../../stores/pokemon');
+    pokemonStore = require('../../stores/pokemon'),
+    ClientActions = require('../../actions/client_actions');
 
 var PokemonDetail = React.createClass({
+  componentWillReceiveProps: function(props) {
+    var id = parseInt(props.params.pokemonId);
+    ClientActions.fetchSinglePokemon(id);
+  },
+
   getInitialState: function() {
     return {pokemon: this.getStateFromStore()};
   },
@@ -16,7 +22,6 @@ var PokemonDetail = React.createClass({
 
   getStateFromStore: function() {
     var id = parseInt(this.props.params.pokemonId);
-
     return pokemonStore.find(id);
   },
 

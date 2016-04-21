@@ -5,6 +5,10 @@ var dispatcher = require('../dispatcher/dispatcher'),
 var ClientActions = {
   fetchAllPokemons: function(){
     ApiUtil.fetchAllPokemons();
+  },
+
+  fetchSinglePokemon: function(id) {
+    ApiUtil.fetchSinglePokemon(id);
   }
 };
 
