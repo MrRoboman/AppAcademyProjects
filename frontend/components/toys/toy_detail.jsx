@@ -35,15 +35,23 @@ var ToyDetail = React.createClass({
   },
 
   render: function() {
-    var toy = "Loading...";
+    var content = "Loading...";
 
     if (this.state.toy) {
-      toy = this.state.toy;
+      var toy = this.state.toy;
+      content = (
+        <div className="detail">
+          <img src={toy.image_url} className="toy-image"/>
+          <p>name: {toy.name}</p>
+          <p>happiness: {toy.happiness}</p>
+          <p>price: {toy.price}</p>
+        </div>
+      );
     }
 
     return (
       <div className="toy-detail-pane">
-        Hello World {toy.name}
+        {content}
       </div>
     );
   }
