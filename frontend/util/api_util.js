@@ -1,4 +1,5 @@
-var dispatcher = require('../dispatcher/dispatcher');
+var dispatcher = require('../dispatcher/dispatcher'),
+    ServerActions = require('../actions/server_actions');
 
 var ApiUtil = {
   fetchAllPokemons: function() {
@@ -7,7 +8,7 @@ var ApiUtil = {
       url: "api/pokemon",
       dataType: "json",
       success: function(data) {
-        console.log(data);
+        ServerActions.receivedPokemons(data);
       }
     });
   }
