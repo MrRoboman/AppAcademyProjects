@@ -36,6 +36,23 @@ pokemonStore.find = function(id) {
   return _pokemons[id];
 };
 
+pokemonStore.findToy = function(pokemonId, toyId) {
+  var toy;
+  var pokemon = this.find(pokemonId);
+  if (!pokemon || !pokemon.toys) {
+    return;
+  }
+
+  pokemon.toys.forEach(function(currentToy) {
+    if (currentToy.id === toyId) {
+      toy = currentToy;
+      return;
+    }
+  });
+
+  return toy;
+};
+
 // private
 
 var resetPokemons = function(pokemons) {
