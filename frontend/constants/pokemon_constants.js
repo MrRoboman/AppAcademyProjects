@@ -1,6 +1,5 @@
 var PokemonConstants = {
-  POKEMONS_RECEIVED: "POKEMONS_RECEIVED",
-  FETCH_POKEMONS:    "FETCH_POKEMONS"
+  POKEMONS_RECEIVED: "POKEMONS_RECEIVED"
 };
 
 module.exports = PokemonConstants;
