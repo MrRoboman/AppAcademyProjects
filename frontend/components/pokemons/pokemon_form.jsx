@@ -5,7 +5,19 @@ var React = require('react'),
 var PokemonForm = React.createClass({
   mixins: [LinkedStateMixin],
 
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+
+  showDetail: function(id) {
+    this.context.router.push("pokemon/" + id);
+  },
+
   getInitialState: function() {
+    return this.getDefaultState();
+  },
+
+  getDefaultState: function() {
     return {
       name: "",
       image_url: "",
@@ -29,7 +41,9 @@ var PokemonForm = React.createClass({
       moves: [this.state.move_1, this.state.move_2]
     };
 
-    ClientActions.createPokemon(params);
+    ClientActions.createPokemon(params, this.showDetail);
+
+    this.setState(this.getDefaultState());
   },
 
   render: function() {

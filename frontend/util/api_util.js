@@ -24,14 +24,15 @@ var ApiUtil = {
     });
   },
 
-  createPokemon: function(pokemonDeets) {
+  createPokemon: function(pokemonDeets, callback) {
     $.ajax({
       type: "POST",
       url: "api/pokemon",
       dataType: "json",
       data: {pokemon: pokemonDeets},
       success: function(data) {
-        console.log(data);
+        callback(data.id);
+        ServerActions.receiveSinglePokemon(data);
       }
     });
   }

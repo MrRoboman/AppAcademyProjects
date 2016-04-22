@@ -10,9 +10,9 @@ var ClientActions = {
   fetchSinglePokemon: function(id) {
     ApiUtil.fetchSinglePokemon(id);
   },
-  
-  createPokemon: function(pokemonDeets) {
-    ApiUtil.createPokemon(pokemonDeets);
+
+  createPokemon: function(pokemonDeets, callback) {
+    ApiUtil.createPokemon(pokemonDeets, callback);
   }
 };
 
