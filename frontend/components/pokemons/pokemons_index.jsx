@@ -3,6 +3,7 @@ var React = require('react'),
     ClientActions = require('../../actions/client_actions'),
     PokemonIndexItem = require('./pokemon_index_item');
 
+
 var PokemonsIndex = React.createClass({
   getInitialState: function() {
     return {pokemons: pokemonStore.all()};
