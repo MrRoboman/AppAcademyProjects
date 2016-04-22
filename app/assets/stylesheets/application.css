@@ -41,7 +41,7 @@ ul {
 #pokedex {
   /* height: 100%; */
   width: 100%;
-  background-color: mintcream;
+  background-color: rgba(245, 255, 250, 0.7);;
   border: thin solid darkseagreen;
 }
 
