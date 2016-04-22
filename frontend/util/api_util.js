@@ -22,6 +22,18 @@ var ApiUtil = {
         ServerActions.receiveSinglePokemon(data);
       }
     });
+  },
+
+  createPokemon: function(pokemonDeets) {
+    $.ajax({
+      type: "POST",
+      url: "api/pokemon",
+      dataType: "json",
+      data: {pokemon: pokemonDeets},
+      success: function(data) {
+        console.log(data);
+      }
+    });
   }
 };
 

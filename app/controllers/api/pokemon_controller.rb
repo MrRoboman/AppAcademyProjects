@@ -1,5 +1,6 @@
 class Api::PokemonController < ApplicationController
   def create
+
     @pokemon = Pokemon.new(pokemon_params)
 
     if @pokemon.save

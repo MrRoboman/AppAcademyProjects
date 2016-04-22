@@ -1,5 +1,6 @@
 var React = require('react'),
-    LinkedStateMixin = require('react-addons-linked-state-mixin');
+    LinkedStateMixin = require('react-addons-linked-state-mixin'),
+    ClientActions = require('../../actions/client_actions');
 
 var PokemonForm = React.createClass({
   mixins: [LinkedStateMixin],
@@ -7,13 +8,28 @@ var PokemonForm = React.createClass({
   getInitialState: function() {
     return {
       name: "",
-      imageUrl: "",
-      type: "",
+      image_url: "",
+      poke_type: window.pokemonTypes[0],
       attack: "",
       defense: "",
-      move1: "",
-      move2: ""
+      move_1: "",
+      move_2: ""
     };
+  },
+
+  createPokemon: function(event) {
+    event.preventDefault();
+
+    var params = {
+      name: this.state.name,
+      image_url: this.state.image_url,
+      poke_type: this.state.poke_type,
+      attack: this.state.attack,
+      defense: this.state.defense,
+      moves: [this.state.move_1, this.state.move_2]
+    };
+
+    ClientActions.createPokemon(params);
   },
 
   render: function() {
@@ -35,7 +51,7 @@ var PokemonForm = React.createClass({
 
         <div>
           <label key="3" htmlFor="pokemon_type">Type:</label>
-            <select id="pokemon_type" valueLink={this.linkState("type")}>
+            <select id="pokemon_type" className="type-selector" valueLink={this.linkState("poke_type")}>
               {typeOptions}
             </select>
         </div>
@@ -52,16 +68,16 @@ var PokemonForm = React.createClass({
 
         <div>
           <label key="6" htmlFor="pokemon_move_1">Move #1:</label>
-            <input id="pokemon_move_1" type="text" valueLink={this.linkState("move1")}/>
+            <input id="pokemon_move_1" type="text" valueLink={this.linkState("move_1")}/>
         </div>
 
         <div>
           <label key="7" htmlFor="pokemon_move_2">Move #2:</label>
-            <input id="pokemon_move_2" type="text" valueLink={this.linkState("move2")}/>
+            <input id="pokemon_move_2" type="text" valueLink={this.linkState("move_2")}/>
         </div>
 
 
-        <button>Create Pokemon</button>
+        <button onClick={this.createPokemon}>Create Pokemon</button>
       </form>
     );
   }

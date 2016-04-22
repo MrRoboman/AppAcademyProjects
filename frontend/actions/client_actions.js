@@ -9,6 +9,10 @@ var ClientActions = {
 
   fetchSinglePokemon: function(id) {
     ApiUtil.fetchSinglePokemon(id);
+  },
+  
+  createPokemon: function(pokemonDeets) {
+    ApiUtil.createPokemon(pokemonDeets);
   }
 };
 
