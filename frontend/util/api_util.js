@@ -32,7 +32,6 @@ var ApiUtil = {
       data: {pokemon: pokemonDeets},
       success: function(data) {
         callback(data.id);
-        ServerActions.receiveSinglePokemon(data);
       }
     });
   }
