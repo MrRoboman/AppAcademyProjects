@@ -1,0 +1,9 @@
+<h2> rented cats: </h2>
+<% CatRentalRequest.all.each do |request| %>
+  <h3> rented cat: </h3>
+  <%= request.cat.name %>
+  <h3> start date: </h3>
+  <%= request.start_date %>
+  <h3> end date: </h3>
+  <%= request.end_date %>
+  <% end %>

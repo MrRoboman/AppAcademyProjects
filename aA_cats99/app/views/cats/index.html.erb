@@ -1,0 +1,26 @@
+<center>
+<h1 style="color:cornflowerblue; font-family:verdana;"> Cats! </h1>
+<h4>do you even cat?</h4>
+
+<%= link_to "Rent a cat!", cat_rental_requests_url %><br>
+<%= link_to "Submit Cat!", new_cat_url %><br>
+<br>
+
+<br>
+
+<img src="https://media0.giphy.com/media/3AkIiqu7vfriw/200_s.gif">
+<br>
+
+<p>Cats available: <%= Cat.all.count %></p>
+
+<%= render "shared/delete_form", cats: Cat.all %>
+
+<br>
+
+<% @cats.each do |cat| %>
+  <!-- <ul style="list-style-type: none;"> -->
+    <li  style="list-style-type: none;"><%= link_to cat.name, cat_url(cat) %></li><br>
+  <!-- </ul> -->
+
+<% end %>
+</center>
