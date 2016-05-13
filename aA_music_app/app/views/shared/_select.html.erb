@@ -1,0 +1,22 @@
+<!--
+album[band_id]
+Band
+Band.all.each
+band.name -->
+
+<label for="<%= param_name %>">Band</label>
+<select class="" name="<%= param_name %>">
+  <% list.each do |item| %>
+    <%# selected = @album.band == band ? 'selected' : '' %>
+    <option value="<%= item.id %>" <%#= selected %>><%= item.name %></option>
+  <% end %>
+</select>
+
+
+<!-- <label for="album[band_id]">Band</label>
+<select class="" name="album[band_id]">
+  <%# Band.all.each do |band| %>
+    <%# selected = @album.band == band ? 'selected' : '' %>
+    <option value="<%#= band.id %>" <%#= selected %>><%#= band.name %></option>
+  <%# end %>
+</select> -->

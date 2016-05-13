@@ -1,0 +1,39 @@
+<!-- Edit Album -->
+
+
+<h1>Edit Album: <%= @album.name %></h1>
+
+<%= render partial: "shared/select", locals: {list: Band.all, param_name: "album[band_id]"} %>
+
+<form class="" action="<%= album_url(@album) %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="patch">
+
+  <label for="album[band_id]">Band</label>
+  <select class="" name="album[band_id]">
+    <% Band.all.each do |band| %>
+      <% selected = @album.band == band ? 'selected' : '' %>
+      <option value="<%= band.id %>" <%= selected %>><%= band.name %></option>
+    <% end %>
+  </select>
+
+  <br><br>
+
+  <label for="album[recording_venue]">Recorded</label><br>
+  <input type="radio"
+         name="album[recording_venue]"
+         value="Live"
+         <%= "checked" if @album.recording_venue == "Live" %>>
+         Live
+       </input>
+  <br>
+  <input type="radio"
+        name="album[recording_venue]"
+        value="Studio"
+        <%= "checked" if @album.recording_venue == "Studio" %>>
+        Studio
+      </input>
+
+  <br><br>
+  <input type="submit" value="Update">
+</form>
